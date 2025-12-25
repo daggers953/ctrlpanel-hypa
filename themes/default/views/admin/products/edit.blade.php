@@ -41,6 +41,13 @@
                             </div>
                         @endif
 
+                        <!-- Product Add-ons Link -->
+                        <div class="mb-3">
+                            <a href="{{ route('admin.products.addons.index', $product->id) }}" class="btn btn-info btn-block">
+                                <i class="fas fa-puzzle-piece"></i> {{ __('Manage Product Add-ons') }}
+                            </a>
+                        </div>
+
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title">{{ __('Product Details') }}</h5>

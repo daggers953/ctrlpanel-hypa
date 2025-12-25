@@ -223,3 +223,6 @@ Route::middleware(['auth', 'checkSuspended'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
+
+// Product Add-ons Routes
+require base_path('routes/product-addons.php');

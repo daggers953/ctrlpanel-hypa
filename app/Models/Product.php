@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -174,5 +175,15 @@ class Product extends Model
     public function nodes()
     {
         return $this->belongsToMany(Node::class);
+    }
+
+    /**
+     * Get all add-ons available for this product
+     *
+     * @return HasMany
+     */
+    public function addons(): HasMany
+    {
+        return $this->hasMany(ProductAddon::class, 'product_id', 'id');
     }
 }

@@ -11,6 +11,7 @@ use Hidehalo\Nanoid\Client;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Client\Response;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -165,6 +166,16 @@ class Server extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get all active add-ons for this server
+     *
+     * @return HasMany
+     */
+    public function addons(): HasMany
+    {
+        return $this->hasMany(ServerAddon::class, 'server_id', 'id');
     }
 
     public function getEffectiveBillingPriorityAttribute()
